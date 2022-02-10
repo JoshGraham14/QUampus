@@ -11,3 +11,8 @@
 body {
 	font-family: 'Poppins', sans-serif;
 }
+
+.map-container {
+	width: 500px;
+	height: 500px;
+}
