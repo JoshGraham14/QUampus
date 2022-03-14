@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { DiningItem } from '../components/diningItem'
 
 const Dining = () => {
 	const [diningOptions, setAllDiningOptions] = useState([])
@@ -14,13 +15,7 @@ const Dining = () => {
 		<div>
 			<h2>Dining Options</h2>
 			{diningOptions.map(item => {
-				return (
-					<div>
-						<h4 key={item.name}>{item.name}</h4>
-						<p>Location: {item.location}</p>
-						<p>Commonly known as: {item.alt_name}</p>
-					</div>
-				)
+				return <DiningItem key={item.name} item={item} />
 			})}
 		</div>
 	)
