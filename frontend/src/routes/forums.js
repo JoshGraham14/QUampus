@@ -1,4 +1,4 @@
-export const Forums = () => {
+const Forums = () => {
 	return (
 		<div>
 			<h2>Forums</h2>

@@ -1,4 +1,4 @@
-export const Numbers = () => {
+const Numbers = () => {
 	return (
 		<div>
 			<h2>Numbers</h2>

@@ -1,4 +1,4 @@
-export const Profile = () => {
+const Profile = () => {
 	return (
 		<div>
 			<h2>Profile</h2>
