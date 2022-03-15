@@ -2,7 +2,8 @@ import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 const mapStyles = {
 	width: '100%',
-	height: '100%',
+	height: '80%',
+	margin: 0,
 }
 
 export const QUMap = props => {

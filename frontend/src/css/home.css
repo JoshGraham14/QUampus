@@ -1,0 +1,21 @@
+/* Custom properties are defined in app.css */
+
+.home-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4em;
+	margin-top: 4em;
+}
+
+.logo {
+	width: 75vw;
+}
+
+.btn-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 2.5em;
+}

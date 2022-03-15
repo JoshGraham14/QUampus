@@ -1,5 +1,9 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
+
+import axios from 'axios'
 
 import { Link } from 'react-router-dom'
 
@@ -10,7 +14,6 @@ const MapOptionsList = props => {
 	const [listOptions, setAllListOptions] = useState([])
 
 	useEffect(() => {
-		console.log(`trying http://127.0.0.1:8000/${page}/`)
 		axios.get(`http://127.0.0.1:8000/${page}/`).then(response => {
 			setAllListOptions(response.data)
 		}) // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +27,12 @@ const MapOptionsList = props => {
 
 	return (
 		<div>
-			<Link to='/'>Back</Link>
+			<Link to='/'>
+				<FontAwesomeIcon
+					className='icon light-blue'
+					icon={faCircleChevronLeft}
+				/>
+			</Link>
 			{getTitle(page)}
 			{listOptions.map(item => {
 				return <ListItem key={item.name} item={item} page={page} />
