@@ -9,9 +9,7 @@ import MapPage from './routes/mapPage'
 import Numbers from './routes/numbers'
 import Forums from './routes/forums'
 import Home from './routes/home'
-import Dining from './routes/dining'
-import LectureHall from './routes/lectureHalls'
-import Residences from './routes/residences'
+import MapOptionsList from './routes/mapOptionsList'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -19,9 +17,18 @@ ReactDOM.render(
 			<Routes>
 				<Route path='/' element={<App />}>
 					<Route index element={<Home />} />
-					<Route path='/dining' element={<Dining />} />
-					<Route path='/lecturehalls' element={<LectureHall />} />
-					<Route path='/residences' element={<Residences />} />
+					<Route
+						path='/dining'
+						element={<MapOptionsList page='dining' />}
+					/>
+					<Route
+						path='/lecturehalls'
+						element={<MapOptionsList page='lecturehall' />}
+					/>
+					<Route
+						path='/residences'
+						element={<MapOptionsList page='residence' />}
+					/>
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/map' element={<MapPage />} />
 					<Route path='/numbers' element={<Numbers />} />
