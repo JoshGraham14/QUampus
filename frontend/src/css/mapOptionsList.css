@@ -1,0 +1,19 @@
+.options-container {
+	display: flex;
+	flex-direction: column;
+	gap: 3em;
+	width: 100%;
+	padding: 1em 1.5em;
+	margin-bottom: 5em;
+}
+
+.options-container > .list-item:not(:last-child)::after {
+	content: '';
+	display: block;
+	position: absolute;
+	margin-top: 8em;
+	background: black;
+	color: black;
+	width: 88vw;
+	height: 0.15em;
+}

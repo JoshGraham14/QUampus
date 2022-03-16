@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'
 
 import { ListItem } from '../components/listItem'
 
+import '../css/mapOptionsList.css'
+
 const MapOptionsList = props => {
 	const { page } = props
 	const [listOptions, setAllListOptions] = useState([])
@@ -20,23 +22,26 @@ const MapOptionsList = props => {
 	}, [])
 
 	const getTitle = page => {
-		if (page === 'dining') return <h2>Dining</h2>
-		else if (page === 'residence') return <h2>Residences</h2>
-		else return <h2>Lecture Halls</h2>
+		if (page === 'dining') return <h2 className='title'>Dining</h2>
+		else if (page === 'residence')
+			return <h2 className='title'>Residences</h2>
+		else return <h2 className='title'>Lecture Halls</h2>
 	}
 
 	return (
 		<div>
 			<Link to='/'>
 				<FontAwesomeIcon
-					className='icon light-blue'
+					className='icon back-btn'
 					icon={faCircleChevronLeft}
 				/>
 			</Link>
 			{getTitle(page)}
-			{listOptions.map(item => {
-				return <ListItem key={item.name} item={item} page={page} />
-			})}
+			<div className='options-container'>
+				{listOptions.map(item => {
+					return <ListItem key={item.name} item={item} page={page} />
+				})}
+			</div>
 		</div>
 	)
 }

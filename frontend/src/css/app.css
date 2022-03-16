@@ -23,8 +23,10 @@ body {
 }
 
 .map-container {
-	width: 500px;
-	height: 500px;
+	width: 100vw;
+	height: 85vh;
+	margin: 0;
+	border-top: 0.5em solid black;
 }
 
 nav {
@@ -36,6 +38,7 @@ nav {
 	justify-content: space-around;
 	padding-top: 1em;
 	padding-bottom: 1.3em;
+	z-index: 3;
 }
 
 .icon {
@@ -43,8 +46,12 @@ nav {
 	font-size: 2rem;
 }
 
-.light-blue {
+.back-btn {
 	color: var(--color-light-blue);
+	font-size: 3rem;
+	position: absolute;
+	top: 1em;
+	left: 0.5em;
 }
 
 .btn {
@@ -56,4 +63,16 @@ nav {
 	padding: 0.25em 0.5em;
 	border-radius: 0.75em;
 	font-size: 2rem;
+}
+
+.title {
+	text-align: center;
+	margin-top: 2em;
+	margin-bottom: 0.2em;
+	font-size: 3rem;
+	color: var(--color-light-blue);
+}
+
+.red {
+	color: red;
 }

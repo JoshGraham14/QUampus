@@ -1,0 +1,16 @@
+.list-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2em;
+}
+
+.info h4 {
+	font-size: 1.3rem;
+}
+
+.map-icon {
+	text-decoration: none;
+	color: var(--color-light-blue);
+	font-size: 3rem;
+}

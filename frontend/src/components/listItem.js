@@ -1,33 +1,47 @@
+import { Link } from 'react-router-dom'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+
+import '../css/listItem.css'
+
 export const ListItem = props => {
 	const { page, item } = props
 
 	const buildRender = page => {
 		if (page === 'dining') {
 			return (
-				<div>
+				<div className='info'>
 					<h4>{item.name}</h4>
 					<p>Location: {item.location}</p>
-					<p>Commonly known as: {item.alt_name}</p>
+					<p className='red'>Commonly known as: {item.alt_name}</p>
 				</div>
 			)
-		} else if (page === 'lecturehalls') {
+		} else if (page === 'lecturehall') {
 			return (
-				<div>
+				<div className='info'>
 					<h4>{item.name}</h4>
 					<p>Address: {item.address}</p>
-					<p>Faculty: {item.faculty}</p>
+					<p className='red'>Faculty: {item.faculty}</p>
 				</div>
 			)
 		} else {
 			return (
-				<div>
+				<div className='info'>
 					<h4>{item.name}</h4>
 					<p>Address: {item.address}</p>
-					<p>Commonly Known As: {item.alt_name}</p>
+					<p className='red'>Commonly Known As: {item.alt_name}</p>
 				</div>
 			)
 		}
 	}
 
-	return <>{buildRender(page)}</>
+	return (
+		<div className='list-item'>
+			{buildRender(page)}
+			<Link to={'/map'} state={{ item, page }}>
+				<FontAwesomeIcon className='map-icon' icon={faMapLocationDot} />
+			</Link>
+		</div>
+	)
 }
