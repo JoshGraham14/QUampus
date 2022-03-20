@@ -10,6 +10,35 @@
 	position: relative;
 }
 
+.post-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1em;
+}
+
+.post-header h5 {
+	color: var(--color-light-blue);
+	font-size: 1.2rem;
+}
+
+.img-wrapper {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 2.5em;
+	height: 2.5em;
+	position: relative;
+	outline: 0.123em solid var(--color-dark-blue);
+}
+
+.post-profile-pic {
+	display: inline;
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
 .reply::before {
 	content: '';
 	display: block;

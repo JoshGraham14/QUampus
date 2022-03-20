@@ -9,6 +9,7 @@
 	flex-direction: column;
 	gap: 1em;
 	width: 87%;
+	margin-bottom: 6em;
 }
 
 .post-wrapper {

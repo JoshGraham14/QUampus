@@ -14,7 +14,6 @@ const MapPage = () => {
 	// to create the marker on the map
 
 	const renderHeader = () => {
-		console.log(page)
 		if (item !== undefined) {
 			return (
 				<>
