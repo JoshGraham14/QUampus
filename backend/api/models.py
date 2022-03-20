@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import CharField
+from django.contrib.auth.models import User
 
 class Dining(models.Model):
     name = models.CharField(max_length=40)
@@ -37,3 +38,27 @@ class PhoneNumber(models.Model):
 
     def __str__(self):
         return f'{self.name}: {self.number}'
+
+
+class ForumPost(models.Model):
+    message = models.TextField()
+    poster = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        if len(self.message) < 40:
+            return self.message
+        else:
+            return f'{self.message[:39]} ...'
+
+class ForumReply(models.Model):
+    message = models.TextField()
+    poster = models.ForeignKey(User, related_name='replies', on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    original_post = models.ForeignKey(ForumPost, related_name='forum_replies', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        if len(self.message) < 40:
+            return f'{self.poster} said: {self.message}'
+        else:
+            return f'{self.poster} said: {self.message[:39]} ...'

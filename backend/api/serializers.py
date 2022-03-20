@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from .models import Dining, LectureHall, Residence, PhoneNumber
+from .models import Dining, LectureHall, Residence, PhoneNumber, \
+                    ForumPost, ForumReply
+from django.contrib.auth.models import User
 
 class DiningSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -23,4 +25,22 @@ class ResidenceSerializer(serializers.HyperlinkedModelSerializer):
 class PhoneNumberSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PhoneNumber
+        fields = '__all__'
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
+
+
+class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ForumPost
+        fields = '__all__'
+
+
+class ForumReplySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ForumReply
         fields = '__all__'
