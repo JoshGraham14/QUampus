@@ -1,6 +1,7 @@
+import os
 from django.db import models
-from django.forms import CharField
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 class Dining(models.Model):
     name = models.CharField(max_length=40)
@@ -40,9 +41,12 @@ class PhoneNumber(models.Model):
         return f'{self.name}: {self.number}'
 
 
+class Student(AbstractUser):
+    profile_pic = models.ImageField(default='default-user.png')
+
 class ForumPost(models.Model):
     message = models.TextField()
-    poster = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
+    poster = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -53,7 +57,7 @@ class ForumPost(models.Model):
 
 class ForumReply(models.Model):
     message = models.TextField()
-    poster = models.ForeignKey(User, related_name='replies', on_delete=models.CASCADE)
+    poster = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='replies', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     original_post = models.ForeignKey(ForumPost, related_name='forum_replies', on_delete=models.CASCADE, null=True)
 

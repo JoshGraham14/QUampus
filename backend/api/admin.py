@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 from .models import Dining, LectureHall, Residence, \
-                    PhoneNumber, ForumPost, ForumReply
+                    PhoneNumber, ForumPost, ForumReply, Student
 
+admin.site.register(Student)
 admin.site.register(Dining)
 admin.site.register(LectureHall)
 admin.site.register(Residence)
