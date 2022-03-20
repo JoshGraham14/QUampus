@@ -1,0 +1,22 @@
+.post {
+	background: var(--color-white);
+	position: relative;
+	padding: 1.2em;
+	border-radius: 0.6em;
+}
+
+.reply {
+	width: 90%;
+	position: relative;
+}
+
+.reply::before {
+	content: '';
+	display: block;
+	position: absolute;
+	background: var(--color-light-blue);
+	width: 95%;
+	z-index: -1;
+	transform: translate(-0.7em, -2.5em);
+	height: 2em;
+}

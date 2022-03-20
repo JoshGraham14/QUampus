@@ -34,13 +34,17 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'username']
 
 
+class ForumReplySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ForumReply
+        fields = '__all__'
+
+
 class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
+    forum_replies = ForumReplySerializer(many=True)
     class Meta:
         model = ForumPost
         fields = '__all__'
 
 
-class ForumReplySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = ForumReply
-        fields = '__all__'
+

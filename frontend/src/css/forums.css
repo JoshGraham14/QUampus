@@ -1,0 +1,19 @@
+.forum-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.posts-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	width: 87%;
+}
+
+.post-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	align-items: flex-end;
+}

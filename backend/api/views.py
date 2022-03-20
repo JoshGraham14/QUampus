@@ -31,10 +31,10 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 class ForumPostViewSet(viewsets.ModelViewSet):
-    queryset = ForumPost.objects.all().order_by('poster__id')
+    queryset = ForumPost.objects.all().order_by('created')
     serializer_class = ForumPostSerializer
 
 
 class ForumReplyViewSet(viewsets.ModelViewSet):
-    queryset = ForumReply.objects.all().order_by('original_post__poster__id')
+    queryset = ForumReply.objects.all().order_by('created')
     serializer_class = ForumReplySerializer
