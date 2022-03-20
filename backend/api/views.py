@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 from rest_framework import viewsets
 
-from .serializers import DiningSerializer, LectureHallSerializer, ResidenceSerializer
-from .models import Dining, LectureHall, Residence
+from .models import Dining, LectureHall, Residence, PhoneNumber
+from .serializers import DiningSerializer, LectureHallSerializer, \
+                         ResidenceSerializer, PhoneNumberSerializer
 
 class DiningViewSet(viewsets.ModelViewSet):
     queryset = Dining.objects.all().order_by('name')
@@ -18,4 +19,9 @@ class LectureHallViewSet(viewsets.ModelViewSet):
 class ResidenceViewSet(viewsets.ModelViewSet):
     queryset = Residence.objects.all().order_by('name')
     serializer_class = ResidenceSerializer
+
+
+class PhoneNumberViewSet(viewsets.ModelViewSet):
+    queryset = PhoneNumber.objects.all().order_by('name')
+    serializer_class = PhoneNumberSerializer
 

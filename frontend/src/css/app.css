@@ -73,6 +73,10 @@ nav {
 	color: var(--color-light-blue);
 }
 
+.near-top {
+	margin-top: 0.5em;
+}
+
 .red {
 	color: red;
 }
