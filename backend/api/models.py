@@ -43,6 +43,8 @@ class PhoneNumber(models.Model):
 
 class Student(AbstractUser):
     profile_pic = models.ImageField(default='default-user.png')
+    REQUIRED_FIELDS = []
+    
 
 class ForumPost(models.Model):
     message = models.TextField()
