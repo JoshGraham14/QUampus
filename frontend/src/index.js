@@ -4,12 +4,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
+
 import Profile from './routes/profile'
 import MapPage from './routes/mapPage'
 import Numbers from './routes/numbers'
 import Forums from './routes/forums'
 import Home from './routes/home'
 import MapOptionsList from './routes/mapOptionsList'
+import LoginSignup from './routes/loginSignup'
+import LogIn from './routes/login'
+import SignUp from './routes/signup'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -29,7 +33,10 @@ ReactDOM.render(
 						path='/residences'
 						element={<MapOptionsList page='residence' />}
 					/>
+					<Route path='loginsignup' element={<LoginSignup />} />
 					<Route path='/profile' element={<Profile />} />
+					<Route path='/login' element={<LogIn />} />
+					<Route path='/signup' element={<SignUp />} />
 					<Route path='/map' element={<MapPage />} />
 					<Route path='/numbers' element={<Numbers />} />
 					<Route path='/forums' element={<Forums />} />
