@@ -1,0 +1,48 @@
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5em;
+}
+
+.signup {
+	gap: 1em;
+}
+
+.form-input {
+	padding: 1em;
+	font-size: 1.3rem;
+	border: none;
+	border-radius: 0.5em;
+	width: 26ch;
+}
+
+.form-input:focus {
+	outline: 0.1em solid var(--color-light-blue);
+}
+
+.small-font {
+	font-size: 1.1rem;
+	width: 30ch;
+}
+
+.submit-buttons {
+	display: flex;
+	gap: 3em;
+	align-items: center;
+}
+
+.submit {
+	border: none;
+	border-radius: 0.5em;
+	width: 10ch;
+	font-size: 2rem;
+	margin-top: 0.5em;
+}
+
+.back-link {
+	color: var(--color-light-blue);
+	text-decoration: none;
+	font-size: 1.4rem;
+	margin-top: 0.7em;
+}

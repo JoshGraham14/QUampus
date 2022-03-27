@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
+
 import axios from 'axios'
 import logo from '../img/logo350.png'
 
@@ -32,10 +33,11 @@ const SignUp = () => {
 	return (
 		<div className='home-container smaller-gap'>
 			<img className='logo' src={logo} alt='QUampus logo' />
-			<form onSubmit={handleSubmit}>
+			<form className='form-container signup' onSubmit={handleSubmit}>
 				<input
 					type='text'
 					name='email'
+					className='form-input small-font'
 					onChange={handleChange}
 					placeholder='email'
 					autoComplete='off'
@@ -43,6 +45,7 @@ const SignUp = () => {
 				<input
 					type='text'
 					name='username'
+					className='form-input small-font'
 					onChange={handleChange}
 					placeholder='username'
 					autoComplete='off'
@@ -50,12 +53,21 @@ const SignUp = () => {
 				<input
 					type='password'
 					name='password'
+					className='form-input small-font'
 					onChange={handleChange}
 					placeholder='password'
 				/>
-				<input type='submit' value='Sign Up' />
+				<div className='submit-buttons'>
+					<Link className='back-link' to='/loginsignup'>
+						Back
+					</Link>
+					<input
+						className='btn submit'
+						type='submit'
+						value='Sign Up'
+					/>
+				</div>
 			</form>
-			<Link to='/profile'>Back</Link>
 		</div>
 	)
 }

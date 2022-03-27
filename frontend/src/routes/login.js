@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 // import axios from 'axios'
 import logo from '../img/logo350.png'
+import '../css/login.css'
 
 const LogIn = () => {
 	const [formInfo, setAllFormInfo] = useState({})
@@ -39,10 +40,15 @@ const LogIn = () => {
 		<div className='home-container smaller-gap'>
 			<img className='logo' src={logo} alt='QUampus logo' />
 			{message ? <h3>{message}</h3> : ''}
-			<form onSubmit={handleSubmit} action='/login'>
+			<form
+				className='form-container'
+				onSubmit={handleSubmit}
+				// action='/login'
+			>
 				<input
 					type='text'
 					name='username'
+					className='form-input'
 					onChange={handleChange}
 					placeholder='username'
 					autoComplete='off'
@@ -50,11 +56,20 @@ const LogIn = () => {
 				<input
 					type='password'
 					name='password'
+					className='form-input'
 					onChange={handleChange}
 					placeholder='password'
 				/>
-				<input type='submit' value='Log In' />
-				<Link to='/loginsignup'>Back</Link>
+				<div className='submit-buttons'>
+					<Link className='back-link' to='/loginsignup'>
+						Back
+					</Link>
+					<input
+						className='btn submit'
+						type='submit'
+						value='Log In'
+					/>
+				</div>
 			</form>
 		</div>
 	)

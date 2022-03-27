@@ -33,7 +33,10 @@ ReactDOM.render(
 						path='/residences'
 						element={<MapOptionsList page='residence' />}
 					/>
-					<Route path='loginsignup' element={<LoginSignup />} />
+					<Route
+						path='loginsignup'
+						element={<LoginSignup message='' />}
+					/>
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/login' element={<LogIn />} />
 					<Route path='/signup' element={<SignUp />} />
