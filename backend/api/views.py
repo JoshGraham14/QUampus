@@ -100,13 +100,34 @@ class UserView(APIView):
         return Response(serializer.data)
 
     def put(self, request):
-        new = request.data['newUsername']
         user = Student.objects.filter(id=request.data['id']).first()
-        serializer = StudentSerializer(user, data={'username': new, 
-                    'password': user.password, 
-                        'profile_pic': user.profile_pic})
+        # if the username is being updated
+        if request.data['newUsername'] != '':
+            new_username = request.data['newUsername']
+            serializer = StudentSerializer(user, data={'username': new_username, 
+                        'password': user.password, 
+                            'profile_pic': user.profile_pic,
+                            'email': user.email,
+                            'first_name': user.first_name})
+        # if the email is being changed
+        elif request.data['newEmail'] != '':
+            new_email = request.data['newEmail']
+            serializer = StudentSerializer(user, data={'username': user.username, 
+                        'password': user.password, 
+                            'profile_pic': user.profile_pic,
+                            'email': new_email,
+                            'first_name': user.first_name})
+        # if the name is being changed
+        elif request.data['newName'] != '':
+            new_name = request.data['newName']
+            serializer = StudentSerializer(user, data={'username': user.username, 
+                        'password': user.password, 
+                            'profile_pic': user.profile_pic,
+                            'email': user.email,
+                            'first_name': new_name})
         if serializer.is_valid():
             serializer.save()
+            print(f'\n\n{serializer.data}\n\n')
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

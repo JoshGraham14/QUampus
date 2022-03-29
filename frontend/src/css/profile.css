@@ -6,11 +6,12 @@ input[type='file'] {
 	position: absolute;
 	width: 3em;
 	left: 14em;
-	top: 15em;
+	top: 17em;
 	z-index: 5;
 }
 
 .profile-img-wrapper {
+	margin-top: 2em;
 	border-radius: 50%;
 	overflow: hidden;
 	width: 11em !important;
@@ -31,12 +32,12 @@ input[type='file'] {
 .profile-content {
 	display: flex;
 	flex-direction: column;
-	gap: 2em;
+	gap: 3em;
 	align-items: center;
 }
 
 .profile-content p {
-	font-size: 1rem;
+	font-size: 1.1rem;
 }
 
 .profile-information {
@@ -55,4 +56,18 @@ input[type='file'] {
 .display-field span {
 	display: flex;
 	gap: 0.3em;
+}
+
+.btn-profile {
+	font-size: 2rem;
+	width: 17ch;
+	border-radius: 0.3em;
+}
+
+.change-password {
+	border: none;
+	width: 19ch;
+	border-radius: 0.3em;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
 }

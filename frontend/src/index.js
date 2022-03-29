@@ -14,6 +14,7 @@ import MapOptionsList from './routes/mapOptionsList'
 import LoginSignup from './routes/loginSignup'
 import LogIn from './routes/login'
 import SignUp from './routes/signup'
+import ChangePassword from './routes/changePassword'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -43,6 +44,10 @@ ReactDOM.render(
 					<Route path='/map' element={<MapPage />} />
 					<Route path='/numbers' element={<Numbers />} />
 					<Route path='/forums' element={<Forums />} />
+					<Route
+						path='/changepassword'
+						element={<ChangePassword />}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>

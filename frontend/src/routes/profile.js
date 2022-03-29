@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate, Link, useNavigate } from 'react-router-dom'
 
 import icon from '../img/update-profile-icon.png'
 import '../css/profile.css'
@@ -10,12 +10,19 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 const Profile = () => {
+	const navigate = useNavigate()
 	const [username, setUserName] = useState('')
 	const [profilePic, setProfilePic] = useState('')
+	const [email, setEmail] = useState('')
+	const [name, setName] = useState('')
 	const [id, setID] = useState('')
 	const [redirect, setRedirect] = useState(false)
 	const [displayUsernameInput, setDisplayUserNameInput] = useState(false)
+	const [displayEmailInput, setDisplayEmailInput] = useState(false)
+	const [displayNameInput, setDisplayNameInput] = useState(false)
 	const [newUsername, setNewUsername] = useState('')
+	const [newEmail, setNewEmail] = useState('')
+	const [newName, setNewName] = useState('')
 
 	useEffect(() => {
 		let cancel = false
@@ -31,8 +38,10 @@ const Profile = () => {
 			} else {
 				if (cancel) return
 				setID(content.id)
+				setEmail(content.email)
 				setUserName(content.username)
 				setProfilePic(content.profile_pic)
+				setName(content.first_name)
 			}
 		})()
 		return () => {
@@ -66,25 +75,45 @@ const Profile = () => {
 			})
 	}
 
-	const showInput = e => {
-		setDisplayUserNameInput(true)
+	const showInput = (e, field) => {
+		if (field === 'username') {
+			setDisplayUserNameInput(true)
+		} else if (field === 'email') {
+			setDisplayEmailInput(true)
+		} else {
+			setDisplayNameInput(true)
+		}
 	}
 
-	const handleInputChange = e => {
-		console.log(e.target.value)
-		setNewUsername(e.target.value)
+	const handleInputChange = (e, field) => {
+		console.log(`${field}: ${e.target.value}`)
+		if (field === 'username') {
+			setNewUsername(e.target.value)
+		} else if (field === 'email') {
+			setNewEmail(e.target.value)
+		} else {
+			setNewName(e.target.value)
+		}
 	}
 
 	const submitNewData = () => {
-		console.log(`Username is changed to: ${newUsername}`)
-		axios
-			.put('http://127.0.0.1:8000/user', {
-				newUsername: newUsername,
+		const content = {
+			id: id,
+			newEmail: newEmail,
+			newUsername: newUsername,
+			newName: newName,
+		}
+		axios.put('http://127.0.0.1:8000/user', content).then(response => {
+			setUserName(response.data.profile_pic)
+		})
+	}
+
+	const handleChangePassword = () => {
+		navigate('/changepassword', {
+			state: {
 				id: id,
-			})
-			.then(response => {
-				setUserName(response.data.profile_pic)
-			})
+			},
+		})
 	}
 
 	const handleLogout = async () => {
@@ -129,7 +158,10 @@ const Profile = () => {
 									<input
 										autoFocus
 										type='text'
-										onChange={handleInputChange}
+										defaultValue={username}
+										onChange={e =>
+											handleInputChange(e, 'username')
+										}
 									/>
 								</form>
 							)}
@@ -138,15 +170,85 @@ const Profile = () => {
 							<FontAwesomeIcon
 								className='pencil-icon'
 								icon={faPencil}
-								onClick={showInput}
+								onClick={e => showInput(e, 'username')}
+							/>
+						) : (
+							''
+						)}
+					</div>
+					<div className='display-field'>
+						<span>
+							<p>
+								<strong>Email:</strong>
+							</p>
+
+							{!displayEmailInput ? (
+								<p>{email}</p>
+							) : (
+								<form onSubmit={submitNewData}>
+									<input
+										autoFocus
+										type='text'
+										defaultValue={email}
+										onChange={e =>
+											handleInputChange(e, 'email')
+										}
+									/>
+								</form>
+							)}
+						</span>
+						{!displayEmailInput ? (
+							<FontAwesomeIcon
+								className='pencil-icon'
+								icon={faPencil}
+								onClick={e => showInput(e, 'email')}
+							/>
+						) : (
+							''
+						)}
+					</div>
+					<div className='display-field'>
+						<span>
+							<p>
+								<strong>Display Name:</strong>
+							</p>
+							{!displayNameInput ? (
+								<p>{name}</p>
+							) : (
+								<form onSubmit={submitNewData}>
+									<input
+										autoFocus
+										type='text'
+										defaultValue={name}
+										onChange={e =>
+											handleInputChange(e, 'name')
+										}
+									/>
+								</form>
+							)}
+						</span>
+						{!displayEmailInput ? (
+							<FontAwesomeIcon
+								className='pencil-icon'
+								icon={faPencil}
+								onClick={e => showInput(e, 'name')}
 							/>
 						) : (
 							''
 						)}
 					</div>
 				</div>
-
-				<Link to='/loginsignup' onClick={handleLogout}>
+				<button
+					className='btn change-password'
+					onClick={handleChangePassword}
+				>
+					Change Password
+				</button>
+				<Link
+					className='btn btn-profile red-bg'
+					to='/loginsignup'
+					onClick={handleLogout}
+				>
 					Logout
 				</Link>
 			</div>

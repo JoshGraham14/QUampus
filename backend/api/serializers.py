@@ -30,7 +30,7 @@ class PhoneNumberSerializer(serializers.HyperlinkedModelSerializer):
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Student
-        fields = ['id', 'username', 'password', 'profile_pic']
+        fields = ['id', 'username', 'password', 'profile_pic', 'email', 'first_name', 'last_name']
         extra_kwargs = {
             'password': {'write_only': True}
         }
