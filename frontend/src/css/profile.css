@@ -36,5 +36,23 @@ input[type='file'] {
 }
 
 .profile-content p {
-	font-size: 1.3rem;
+	font-size: 1rem;
+}
+
+.profile-information {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 90%;
+	gap: 1em;
+}
+
+.display-field {
+	display: flex;
+	gap: 0.3em;
+}
+
+.display-field span {
+	display: flex;
+	gap: 0.3em;
 }

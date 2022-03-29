@@ -4,6 +4,9 @@ import { Navigate, Link } from 'react-router-dom'
 import icon from '../img/update-profile-icon.png'
 import '../css/profile.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
+
 import axios from 'axios'
 
 const Profile = () => {
@@ -11,6 +14,8 @@ const Profile = () => {
 	const [profilePic, setProfilePic] = useState('')
 	const [id, setID] = useState('')
 	const [redirect, setRedirect] = useState(false)
+	const [displayUsernameInput, setDisplayUserNameInput] = useState(false)
+	const [newUsername, setNewUsername] = useState('')
 
 	useEffect(() => {
 		let cancel = false
@@ -50,7 +55,6 @@ const Profile = () => {
 		let fd = new FormData()
 		fd.append('file', e.target.files[0], e.target.files[0].name)
 		fd.append('id', id)
-		console.log({ file: e.target.files[0] })
 		axios
 			.put('http://127.0.0.1:8000/image-upload', fd, {
 				headers: {
@@ -59,6 +63,27 @@ const Profile = () => {
 			})
 			.then(response => {
 				setProfilePic(response.data.profile_pic)
+			})
+	}
+
+	const showInput = e => {
+		setDisplayUserNameInput(true)
+	}
+
+	const handleInputChange = e => {
+		console.log(e.target.value)
+		setNewUsername(e.target.value)
+	}
+
+	const submitNewData = () => {
+		console.log(`Username is changed to: ${newUsername}`)
+		axios
+			.put('http://127.0.0.1:8000/user', {
+				newUsername: newUsername,
+				id: id,
+			})
+			.then(response => {
+				setUserName(response.data.profile_pic)
 			})
 	}
 
@@ -90,9 +115,37 @@ const Profile = () => {
 						alt='Profile'
 					/>
 				</div>
-				<p>
-					<strong>Username:</strong> {username}
-				</p>
+				<div className='profile-information'>
+					<div className='display-field'>
+						<span>
+							<p>
+								<strong>Username:</strong>
+							</p>
+
+							{!displayUsernameInput ? (
+								<p>{username}</p>
+							) : (
+								<form onSubmit={submitNewData}>
+									<input
+										autoFocus
+										type='text'
+										onChange={handleInputChange}
+									/>
+								</form>
+							)}
+						</span>
+						{!displayUsernameInput ? (
+							<FontAwesomeIcon
+								className='pencil-icon'
+								icon={faPencil}
+								onClick={showInput}
+							/>
+						) : (
+							''
+						)}
+					</div>
+				</div>
+
 				<Link to='/loginsignup' onClick={handleLogout}>
 					Logout
 				</Link>

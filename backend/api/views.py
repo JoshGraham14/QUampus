@@ -96,9 +96,20 @@ class UserView(APIView):
 
         user = Student.objects.filter(id=payload['id']).first()
         serializer = StudentSerializer(user)
-
+        
         return Response(serializer.data)
 
+    def put(self, request):
+        new = request.data['newUsername']
+        user = Student.objects.filter(id=request.data['id']).first()
+        serializer = StudentSerializer(user, data={'username': new, 
+                    'password': user.password, 
+                        'profile_pic': user.profile_pic})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 class ImageUploadView(APIView):
@@ -106,7 +117,9 @@ class ImageUploadView(APIView):
 
     def put(self, request, format=None):
         user = Student.objects.filter(id=request.data['id']).first()
-        serializer = StudentSerializer(user, data={'username': user.username, 'password': user.password, 'profile_pic': request.data['file']})
+        serializer = StudentSerializer(user, data={'username': user.username, 
+                                        'password': user.password, 
+                                        'profile_pic': request.data['file']})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
