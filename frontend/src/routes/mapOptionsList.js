@@ -22,10 +22,11 @@ const MapOptionsList = props => {
 	}, [])
 
 	const getTitle = page => {
-		if (page === 'dining') return <h2 className='title'>Dining</h2>
+		if (page === 'dining')
+			return <h2 className='title near-top down'>Dining</h2>
 		else if (page === 'residence')
-			return <h2 className='title'>Residences</h2>
-		else return <h2 className='title'>Lecture Halls</h2>
+			return <h2 className='title smaller'>Residences</h2>
+		else return <h2 className='title smaller'>Lecture Halls</h2>
 	}
 
 	return (
