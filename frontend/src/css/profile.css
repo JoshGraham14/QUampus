@@ -71,3 +71,35 @@ input[type='file'] {
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 }
+
+.change-password-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+	margin-top: 8em;
+}
+
+.down {
+	margin-top: 0.8em;
+}
+
+.sub-title {
+	font-size: 1.3rem;
+}
+
+.form-message {
+	position: absolute;
+	width: 76%;
+	text-align: center;
+	color: var(--color-red);
+	top: 20%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.green {
+	color: green;
+}

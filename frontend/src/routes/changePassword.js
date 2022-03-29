@@ -1,6 +1,9 @@
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 const ChangePassword = () => {
 	let { state } = useLocation()
@@ -47,44 +50,60 @@ const ChangePassword = () => {
 
 	return (
 		<div>
-			<h2 className='title near-top'>Profile</h2>
-			<p>{message}</p>
-			<p>
-				<strong>Change password</strong>
+			<Link to='/profile'>
+				<FontAwesomeIcon
+					className='icon back-btn'
+					icon={faCircleChevronLeft}
+				/>
+			</Link>
+			<h2 className='title near-top down'>Profile</h2>
+			<p
+				className={
+					message === 'Password updated successfully.'
+						? 'form-message green'
+						: 'form-message'
+				}
+			>
+				{message}
 			</p>
-			<form className='form-container' onSubmit={handleSubmit}>
-				<input
-					autoFocus
-					type='password'
-					name='old-password'
-					className='form-input'
-					onChange={handleChange}
-					placeholder='Old Password'
-					autoComplete='off'
-				/>
-				<input
-					type='password'
-					name='password1'
-					className='form-input'
-					onChange={handleChange}
-					placeholder='New Password'
-					autoComplete='off'
-				/>
-				<input
-					type='password'
-					name='password2'
-					className='form-input'
-					onChange={handleChange}
-					placeholder='Confirm New Password'
-				/>
-				<div className='submit-buttons'>
+			<div className='change-password-content'>
+				<p className='sub-title'>
+					<strong>Change password</strong>
+				</p>
+				<form className='form-container' onSubmit={handleSubmit}>
 					<input
-						className='btn submit'
-						type='submit'
-						value='Update'
+						autoFocus
+						type='password'
+						name='old-password'
+						className='form-input'
+						onChange={handleChange}
+						placeholder='Old Password'
+						autoComplete='off'
 					/>
-				</div>
-			</form>
+					<input
+						type='password'
+						name='password1'
+						className='form-input'
+						onChange={handleChange}
+						placeholder='New Password'
+						autoComplete='off'
+					/>
+					<input
+						type='password'
+						name='password2'
+						className='form-input'
+						onChange={handleChange}
+						placeholder='Confirm New Password'
+					/>
+					<div className='submit-buttons'>
+						<input
+							className='btn submit'
+							type='submit'
+							value='Update'
+						/>
+					</div>
+				</form>
+			</div>
 		</div>
 	)
 }
