@@ -96,16 +96,15 @@ const Profile = () => {
 		}
 	}
 
-	const submitNewData = () => {
+	const submitNewData = e => {
 		const content = {
 			id: id,
 			newEmail: newEmail,
 			newUsername: newUsername,
 			newName: newName,
+			newPassword: '',
 		}
-		axios.put('http://127.0.0.1:8000/user', content).then(response => {
-			setUserName(response.data.profile_pic)
-		})
+		axios.put('http://127.0.0.1:8000/user', content)
 	}
 
 	const handleChangePassword = () => {

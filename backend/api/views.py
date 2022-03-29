@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.parsers import MultiPartParser, FormParser
+from django.contrib.auth.hashers import make_password, check_password
 
 import jwt
 import datetime
@@ -101,14 +102,27 @@ class UserView(APIView):
 
     def put(self, request):
         user = Student.objects.filter(id=request.data['id']).first()
+        # if the password is being updated
+        if request.data['newPassword'] != '':
+            if not check_password(request.data['oldPassword'], user.password):
+                return Response({'status': 'Incorrect old password.'}, status=status.HTTP_200_OK)
+            new_password = request.data['newPassword']
+            new_password = make_password(new_password)
+            serializer = StudentSerializer(user, data={'username': user.username, 
+                        'password': new_password, 
+                            'profile_pic': user.profile_pic,
+                            'email': user.email,
+                            'first_name': user.first_name})
+
         # if the username is being updated
-        if request.data['newUsername'] != '':
+        elif request.data['newUsername'] != '':
             new_username = request.data['newUsername']
             serializer = StudentSerializer(user, data={'username': new_username, 
                         'password': user.password, 
                             'profile_pic': user.profile_pic,
                             'email': user.email,
                             'first_name': user.first_name})
+
         # if the email is being changed
         elif request.data['newEmail'] != '':
             new_email = request.data['newEmail']
@@ -117,6 +131,7 @@ class UserView(APIView):
                             'profile_pic': user.profile_pic,
                             'email': new_email,
                             'first_name': user.first_name})
+                            
         # if the name is being changed
         elif request.data['newName'] != '':
             new_name = request.data['newName']
@@ -125,10 +140,13 @@ class UserView(APIView):
                             'profile_pic': user.profile_pic,
                             'email': user.email,
                             'first_name': new_name})
+            
         if serializer.is_valid():
             serializer.save()
-            print(f'\n\n{serializer.data}\n\n')
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if request.data['newPassword'] != '':
+                return Response({'status': 'Password updated successfully.'}, status=status.HTTP_200_OK)
+            else:
+                return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
