@@ -6,11 +6,14 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import '../css/profile.css'
 
+import axios from 'axios'
+
 const Profile = () => {
 	const [username, setUserName] = useState('')
 	const [profilePic, setProfilePic] = useState('')
 	const [id, setID] = useState('')
 	const [redirect, setRedirect] = useState(false)
+	const [image, setImage] = useState(null)
 	useEffect(() => {
 		let cancel = false
 		;(async () => {
@@ -45,6 +48,22 @@ const Profile = () => {
 		)
 	}
 
+	const fileHandler = async e => {
+		let fd = new FormData()
+		fd.append('file', e.target.files[0], e.target.files[0].name)
+		fd.append('id', id)
+		console.log({ file: e.target.files[0] })
+		axios
+			.put('http://127.0.0.1:8000/image-upload', fd, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			})
+			.then(response => {
+				setProfilePic(response.data.profile_pic)
+			})
+	}
+
 	const handleLogout = async () => {
 		await fetch('http://127.0.0.1:8000/logout', {
 			method: 'POST',
@@ -59,6 +78,7 @@ const Profile = () => {
 			<div className='icon-wrapper'>
 				<FontAwesomeIcon className='plus-icon' icon={faPlus} />
 			</div>
+			<input type='file' onChange={fileHandler} />
 
 			<div className='profile-content'>
 				<div className='profile-img-wrapper'>

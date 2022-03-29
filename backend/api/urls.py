@@ -21,6 +21,7 @@ urlpatterns = [
     path('login', views.LoginView.as_view(),),
     path('user', views.UserView.as_view()),
     path('logout', views.LogoutView.as_view()),
+    path('image-upload', views.ImageUploadView.as_view()),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

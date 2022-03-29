@@ -1,7 +1,8 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.parsers import MultiPartParser, FormParser
 
 import jwt
 import datetime
@@ -12,6 +13,7 @@ from .models import Dining, LectureHall, Residence, PhoneNumber, \
                     ForumPost, ForumReply, Student
 from .serializers import DiningSerializer, ForumPostSerializer, ForumReplySerializer, LectureHallSerializer, \
                          ResidenceSerializer, PhoneNumberSerializer, StudentSerializer
+from . import serializers
 
 
 class DiningViewSet(viewsets.ModelViewSet):
@@ -97,6 +99,19 @@ class UserView(APIView):
 
         return Response(serializer.data)
 
+    
+
+class ImageUploadView(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+
+    def put(self, request, format=None):
+        user = Student.objects.filter(id=request.data['id']).first()
+        serializer = StudentSerializer(user, data={'username': user.username, 'password': user.password, 'profile_pic': request.data['file']})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
 
