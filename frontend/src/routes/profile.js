@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import icon from '../img/update-profile-icon.png'
 import '../css/profile.css'
 
 import axios from 'axios'
@@ -13,7 +11,7 @@ const Profile = () => {
 	const [profilePic, setProfilePic] = useState('')
 	const [id, setID] = useState('')
 	const [redirect, setRedirect] = useState(false)
-	const [image, setImage] = useState(null)
+
 	useEffect(() => {
 		let cancel = false
 		;(async () => {
@@ -75,10 +73,14 @@ const Profile = () => {
 	return (
 		<div>
 			<h2 className='title near-top'>Profile</h2>
-			<div className='icon-wrapper'>
-				<FontAwesomeIcon className='plus-icon' icon={faPlus} />
-			</div>
-			<input type='file' onChange={fileHandler} />
+			<label className='icon-wrapper' htmlFor='file-upload'>
+				<img
+					className='plus-icon'
+					src={icon}
+					alt='upload profile pic'
+				/>
+			</label>
+			<input type='file' id='file-upload' onChange={fileHandler} />
 
 			<div className='profile-content'>
 				<div className='profile-img-wrapper'>

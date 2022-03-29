@@ -1,23 +1,13 @@
-.icon-wrapper {
-	position: relative;
-	border-radius: 50%;
-	overflow: hidden;
-	width: 3em;
-	height: 3em;
-	top: 11.5em;
-	left: 14.5em;
-	z-index: 5;
-	border: 0.3em solid var(--color-light-blue);
-	background: var(--color-white);
+input[type='file'] {
+	display: none;
 }
 
 .plus-icon {
-	display: inline;
-	color: var(--color-light-blue);
-	font-size: 2.7rem;
+	position: absolute;
+	width: 3em;
+	left: 14em;
+	top: 15em;
 	z-index: 5;
-	margin: 0 auto;
-	margin-bottom: 0.1em !important;
 }
 
 .profile-img-wrapper {
