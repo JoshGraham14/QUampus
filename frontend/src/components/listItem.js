@@ -14,7 +14,11 @@ export const ListItem = props => {
 				<div className='info'>
 					<h4>{item.name}</h4>
 					<p>Location: {item.location}</p>
-					<p className='red'>Commonly known as: {item.alt_name}</p>
+					<p className='red'>
+						{item.alt_name === 'none'
+							? 'No other name'
+							: 'Known As: ' + item.alt_name}
+					</p>
 				</div>
 			)
 		} else if (page === 'lecturehall') {
@@ -30,7 +34,11 @@ export const ListItem = props => {
 				<div className='info'>
 					<h4>{item.name}</h4>
 					<p>Address: {item.address}</p>
-					<p className='red'>Commonly Known As: {item.alt_name}</p>
+					<p className='red'>
+						{item.alt_name === 'none'
+							? 'No other name'
+							: 'Known As: ' + item.alt_name}
+					</p>
 				</div>
 			)
 		}

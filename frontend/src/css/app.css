@@ -91,7 +91,7 @@ nav {
 	color: red;
 }
 .red-bg {
-	background: red;
+	background: var(--color-red);
 }
 
 .hidden {

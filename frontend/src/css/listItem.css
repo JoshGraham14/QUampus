@@ -6,7 +6,11 @@
 }
 
 .info h4 {
+	white-space: nowrap;
 	font-size: 1.3rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 19ch;
 }
 
 .map-icon {
