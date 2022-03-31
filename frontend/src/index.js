@@ -6,7 +6,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 
 import Profile from './routes/profile'
-import MapPage from './routes/mapPage'
+// import MapPage from './routes/mapPage'
 import Numbers from './routes/numbers'
 import Forums from './routes/forums'
 import Home from './routes/home'
@@ -15,6 +15,8 @@ import LoginSignup from './routes/loginSignup'
 import LogIn from './routes/login'
 import SignUp from './routes/signup'
 import ChangePassword from './routes/changePassword'
+import QUMapLocation from './routes/QUMapLocation'
+import QUMap from './routes/QUMap'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -41,7 +43,28 @@ ReactDOM.render(
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/login' element={<LogIn />} />
 					<Route path='/signup' element={<SignUp />} />
-					<Route path='/map' element={<MapPage />} />
+					<Route
+						path='/maplocation'
+						element={
+							<QUMapLocation
+							// defaultLocation={{
+							// 	center: { lat: 44.2253, lng: -76.4951 },
+							// 	zoom: 15,
+							// }}
+							/>
+						}
+					/>
+					<Route
+						path='/map'
+						element={
+							<QUMap
+								defaultLocation={{
+									center: { lat: 44.2253, lng: -76.4951 },
+									zoom: 15,
+								}}
+							/>
+						}
+					/>
 					<Route path='/numbers' element={<Numbers />} />
 					<Route path='/forums' element={<Forums />} />
 					<Route

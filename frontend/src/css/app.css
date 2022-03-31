@@ -83,9 +83,17 @@ nav {
 	margin-left: 1.1em;
 }
 
+.campus-map-header {
+	margin-left: 1.8em;
+}
+
 .red {
 	color: red;
 }
 .red-bg {
 	background: red;
+}
+
+.hidden {
+	display: none;
 }

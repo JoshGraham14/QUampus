@@ -1,0 +1,7 @@
+.marker {
+	position: relative;
+	font-size: 3rem;
+	color: var(--color-red);
+	margin-top: -3.2em;
+	margin-left: -0.2em;
+}

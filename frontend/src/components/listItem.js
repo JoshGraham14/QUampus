@@ -39,7 +39,7 @@ export const ListItem = props => {
 	return (
 		<div className='list-item'>
 			{buildRender(page)}
-			<Link to={'/map'} state={{ item, page }}>
+			<Link to={'/maplocation'} state={{ item, page }}>
 				<FontAwesomeIcon className='map-icon' icon={faMapLocationDot} />
 			</Link>
 		</div>

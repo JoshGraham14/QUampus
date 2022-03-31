@@ -1,0 +1,19 @@
+.marker-info {
+	position: absolute;
+	z-index: 5;
+	background: var(--color-red);
+	color: var(--color-white);
+	width: 180px;
+	height: 100px;
+	bottom: 0;
+	transform: translateX(-82px);
+	border-radius: 1em;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.8em;
+	align-items: center;
+	justify-content: center;
+	font-size: clamp(0.5rem, 1rem, 1.1rem);
+	text-align: center;
+}
