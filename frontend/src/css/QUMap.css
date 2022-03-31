@@ -1,0 +1,17 @@
+.drop-down-menu {
+	margin-top: 2em;
+	margin-bottom: 1em;
+	display: flex;
+}
+
+select {
+	margin: auto;
+	width: 80%;
+	font-size: 2rem;
+	border: none;
+	outline: 0.1em solid var(--color-dark-blue);
+	background: var(--color-light-blue);
+	color: var(--color-white);
+	border-radius: 0.25em;
+	padding: 0.2em 2em 0.2em 1em;
+}
