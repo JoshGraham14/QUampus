@@ -17,6 +17,7 @@
 	justify-content: flex-start;
 	align-items: center;
 	gap: 1em;
+	margin-bottom: 0.5em;
 }
 
 .post-header h5 {

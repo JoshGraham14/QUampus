@@ -1,3 +1,24 @@
 .post-form {
-    
+    display: flex;
+    flex-direction: column;
+    width: 87%;
+}
+
+.post-btn {
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 1.2em;
+	border-radius: 0.6em;
+    border: none;
+    resize: none;
+}
+
+textarea:focus {
+    border: none;
+    outline: 0.2em solid var(--color-light-blue);
 }
