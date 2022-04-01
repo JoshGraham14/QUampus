@@ -11,6 +11,7 @@ const Forums = () => {
 	const [redirect, setRedirect] = useState(false)
 	const [auth, setAuth] = useState(false)
 	const [userID, setUserID] = useState(0)
+	const [username, setUsername] = useState('')
 
 	useEffect(() => {
 		let cancel = false
@@ -27,6 +28,7 @@ const Forums = () => {
 				if (cancel) return
 				setAuth(true)
 				setUserID(content.id)
+				setUsername(content.username)
 			}
 		})()
 		return () => {
@@ -60,12 +62,8 @@ const Forums = () => {
 				// forum_replies: [],
 				poster: `http://127.0.0.1:8000/users/${userID}/`,
 			})
-			.then(response => {
-				console.log(response.data)
-			})
 			.catch(response => {
 				console.log('something went wrong')
-				console.log(response.data)
 			})
 	}
 
@@ -86,6 +84,7 @@ const Forums = () => {
 								message={item.message}
 								poster={item.poster}
 								reply={false}
+								originalPost={item.url}
 							/>
 							{item.forum_replies.map(reply => {
 								return (

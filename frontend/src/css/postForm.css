@@ -1,12 +1,42 @@
 .post-form {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 87%;
 }
 
-.post-btn {
+.reply-form {
+    padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reply-form input[type='submit'] {
+    font-size: 1.5rem;
+}
+
+.post-btn{
     margin: auto;
     margin-bottom: 0.5em;
+}
+
+
+.cancel-reply-icon {
+	color: var(--color-red);
+	position: absolute;
+	bottom: 6em;
+    font-size: 2rem;
+    left: 0.8em;
+}
+
+.reply-separator {
+    position: absolute;
+    overflow: hidden;
+    width: 88.5%;
+    height: 0.3em;
+    background: var(--color-light-blue);
+    bottom: 14.5em;
 }
 
 textarea {
@@ -16,9 +46,21 @@ textarea {
 	border-radius: 0.6em;
     border: none;
     resize: none;
+    width: 100%;
 }
 
 textarea:focus {
     border: none;
     outline: 0.2em solid var(--color-light-blue);
+}
+
+.reply-form textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.reply-form textarea {
+    border: none;
+    outline: none;
+    margin-top: 1em;
 }

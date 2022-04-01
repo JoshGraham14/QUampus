@@ -6,9 +6,27 @@
 	width: 100%;
 }
 
+.post-content {
+	word-wrap: break-word;
+  	overflow-wrap: break-word;
+  	-webkit-hyphens: auto;
+   	-moz-hyphens: auto;
+	hyphens: auto;
+	width: 100%;
+	padding-right: 1em;
+}
+
 .reply {
 	width: 90%;
 	position: relative;
+}
+
+.reply-icon {
+	color: var(--color-light-blue);
+	position: absolute;
+	right: 0.2em;
+	bottom: 0.2em;
+	font-size: 1.8rem;
 }
 
 .post-header {
