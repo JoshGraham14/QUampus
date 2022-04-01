@@ -17,4 +17,5 @@
 	flex-direction: column;
 	gap: 0.5em;
 	align-items: flex-end;
+	width: 100%;
 }

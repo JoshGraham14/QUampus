@@ -51,7 +51,7 @@ class ForumReplySerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
-    forum_replies = ForumReplySerializer(many=True)
+    forum_replies = ForumReplySerializer(many=True, required=False)
     class Meta:
         model = ForumPost
         fields = '__all__'

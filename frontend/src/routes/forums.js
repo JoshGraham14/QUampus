@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Post } from '../components/post'
 
 import '../css/forums.css'
+import PostForm from '../components/postForm'
 
 const Forums = () => {
 	const [posts, setAllPosts] = useState([])
@@ -51,9 +52,31 @@ const Forums = () => {
 		)
 	}
 
+	const handleSubmit = e => {
+		const message = e.target[0].value
+		axios
+			.post('http://127.0.0.1:8000/posts/', {
+				message: message,
+				// forum_replies: [],
+				poster: `http://127.0.0.1:8000/users/${userID}/`,
+			})
+			.then(response => {
+				console.log(response.data)
+			})
+			.catch(response => {
+				console.log('something went wrong')
+				console.log(response.data)
+			})
+	}
+
 	return (
 		<div className='forum-body'>
 			<h2 className='title near-top'>Forums</h2>
+			<PostForm
+				postType='post'
+				handleSubmit={handleSubmit}
+				message='Post your query here'
+			/>
 			<div className='posts-container'>
 				{posts.map(item => {
 					return (
