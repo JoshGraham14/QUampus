@@ -55,6 +55,7 @@ const Profile = () => {
 				to='/loginsignup'
 				state={{
 					message: 'You must log in to view or edit your profile.',
+					from: '/profile',
 				}}
 			/>
 		)

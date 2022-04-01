@@ -1,10 +1,13 @@
 import { useState } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate, Link, useNavigate, useLocation } from 'react-router-dom'
 
 import axios from 'axios'
 import logo from '../img/logo350.png'
 
 const SignUp = () => {
+	const navigate = useNavigate()
+	const { state } = useLocation()
+	const { from } = state
 	const [formInfo, setAllFormInfo] = useState({})
 	const [redirect, setRedirect] = useState(false)
 	const handleChange = e => {
@@ -27,7 +30,20 @@ const SignUp = () => {
 	}
 
 	if (redirect) {
-		return <Navigate to='/login' />
+		navigate('/login', {
+			state: {
+				from,
+			},
+		})
+	}
+
+	const handleBack = (e, location) => {
+		e.preventDefault()
+		navigate(location, {
+			state: {
+				from,
+			},
+		})
 	}
 
 	return (
@@ -58,9 +74,13 @@ const SignUp = () => {
 					placeholder='password'
 				/>
 				<div className='submit-buttons'>
-					<Link className='back-link' to='/loginsignup'>
+					<a
+						href='/loginsignup'
+						className='back-link'
+						onClick={e => handleBack(e, '/loginsignup')}
+					>
 						Back
-					</Link>
+					</a>
 					<input
 						className='btn submit'
 						type='submit'

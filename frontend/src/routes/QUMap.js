@@ -17,13 +17,10 @@ const QUMapLocation = props => {
 			.then(response => {
 				setLocations(response.data)
 			})
-			.catch(() => {
-				console.log('something messed up')
-			})
+			.catch(() => {})
 	}, [selected])
 
 	const handleFilter = e => {
-		console.log(e.target.value)
 		setSelected(e.target.value)
 	}
 
@@ -51,7 +48,7 @@ const QUMapLocation = props => {
 					{locations.map(location => {
 						return (
 							<MapMarker
-								key={location.url}
+								key={location.lat + location.long}
 								lat={location.lat}
 								lng={location.long}
 								item={location}
