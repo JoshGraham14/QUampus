@@ -19,3 +19,11 @@
 	align-items: flex-end;
 	width: 100%;
 }
+
+.dm-inbox-icon {
+	color: var(--color-light-blue);
+	position: absolute;
+	right: 0.8em;
+	top: 1.4em;
+	font-size: 2rem;
+}

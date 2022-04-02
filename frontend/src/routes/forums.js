@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Post } from '../components/post'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInbox } from '@fortawesome/free-solid-svg-icons'
 
 import '../css/forums.css'
 import PostForm from '../components/postForm'
 
 const Forums = () => {
+	const navigate = useNavigate()
 	const [posts, setAllPosts] = useState([])
 	const [redirect, setRedirect] = useState(false)
 	const [auth, setAuth] = useState(false)
@@ -54,6 +58,14 @@ const Forums = () => {
 		)
 	}
 
+	const handleInboxButton = () => {
+		navigate('/directmessages', {
+			state: {
+				id: userID,
+			},
+		})
+	}
+
 	const handleSubmit = e => {
 		const message = e.target[0].value
 		axios
@@ -69,6 +81,11 @@ const Forums = () => {
 
 	return (
 		<div className='forum-body'>
+			<FontAwesomeIcon
+				className='dm-inbox-icon'
+				icon={faInbox}
+				onClick={handleInboxButton}
+			/>
 			<h2 className='title near-top'>Forums</h2>
 			<PostForm
 				postType='post'
@@ -83,6 +100,7 @@ const Forums = () => {
 								key={item.id}
 								message={item.message}
 								poster={item.poster}
+								userID={userID}
 								reply={false}
 								originalPost={item.url}
 							/>

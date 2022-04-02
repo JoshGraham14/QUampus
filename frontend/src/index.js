@@ -17,6 +17,8 @@ import SignUp from './routes/signup'
 import ChangePassword from './routes/changePassword'
 import QUMapLocation from './routes/QUMapLocation'
 import QUMap from './routes/QUMap'
+import DirectMessages from './routes/directMessages'
+import Thread from './routes/thread'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -71,6 +73,11 @@ ReactDOM.render(
 						path='/changepassword'
 						element={<ChangePassword />}
 					/>
+					<Route
+						path='/directmessages'
+						element={<DirectMessages />}
+					/>
+					<Route path='/thread' element={<Thread />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

@@ -198,6 +198,7 @@ class ThreadViewSet(viewsets.ModelViewSet):
 
 class ThreadView(APIView):
     def get(self, request):
+        print(f'{request.data["id"]=}')
         id = request.data['id']
         threads = Thread.objects.filter(Q(user__id=id) | Q(receiver__id=id))
         serializer = ThreadSerializer(threads, many=True, context={'request': request})

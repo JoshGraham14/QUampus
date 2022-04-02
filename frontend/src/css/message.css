@@ -1,0 +1,15 @@
+.sent-message {
+    background: var(--color-light-blue);
+    margin-left: 4em;
+    margin-right: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.reply-message {
+    background: var(--color-white);
+    margin-right: 4em;
+    margin-left: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+}

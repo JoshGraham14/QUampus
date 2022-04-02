@@ -1,0 +1,26 @@
+.dm-title {
+    font-size: 2rem;
+    margin-top: 1.5em;
+    margin-left: 2.1em;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: left;
+    margin-top: 2em;
+    padding: 0 2em;
+    gap: 2em;
+}
+
+.messages-container > .message-preview-wrapper:not(:last-child)::after {
+	content: '';
+	display: block;
+	position: absolute;
+	margin-top: 0.6em;
+	background: black;
+	color: black;
+	width: 83vw;
+	height: 0.15em;
+}

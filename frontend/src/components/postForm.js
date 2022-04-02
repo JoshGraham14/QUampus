@@ -11,6 +11,7 @@ const PostForm = props => {
 		handleReplyButton,
 		originalPoster,
 		originalPost,
+		userID,
 	} = props
 
 	const handleReplySubmit = e => {
@@ -19,7 +20,7 @@ const PostForm = props => {
 		axios
 			.post('http://127.0.0.1:8000/replies/', {
 				message: replyMessage,
-				poster: originalPoster,
+				poster: `http://127.0.0.1:8000/users/${userID}/`,
 				original_post: originalPost,
 			})
 			.catch(response => {
