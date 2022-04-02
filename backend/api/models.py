@@ -2,6 +2,7 @@ import os
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from django.dispatch import receiver
 
 class Dining(models.Model):
     name = models.CharField(max_length=40)
@@ -57,6 +58,7 @@ class ForumPost(models.Model):
         else:
             return f'{self.message[:39]} ...'
 
+
 class ForumReply(models.Model):
     message = models.TextField()
     poster = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='replies', on_delete=models.CASCADE)
@@ -68,3 +70,24 @@ class ForumReply(models.Model):
             return f'{self.poster} said: {self.message}'
         else:
             return f'{self.poster} said: {self.message[:39]} ...'
+
+
+class Thread(models.Model):
+    user = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='threads')
+    receiver = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='received_threads')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} and {self.receiver}'
+
+class Message(models.Model):
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='messages', blank=True, null=True)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='message')
+    content = models.CharField(max_length=1000)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        if len(self.message) < 40:
+            return f'{self.user} said: {self.content}'
+        else:
+            return f'{self.user} said: {self.content[:39]} ...'

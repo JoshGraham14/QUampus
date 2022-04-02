@@ -42,6 +42,7 @@ const Profile = () => {
 				setUserName(content.username)
 				setProfilePic(content.profile_pic)
 				setName(content.first_name)
+				console.log(content)
 			}
 		})()
 		return () => {
@@ -105,6 +106,7 @@ const Profile = () => {
 			newName: newName,
 			newPassword: '',
 		}
+		console.log(`submitting: ${content}`)
 		axios.put('http://127.0.0.1:8000/user', content)
 	}
 
@@ -140,7 +142,7 @@ const Profile = () => {
 				<div className='profile-img-wrapper'>
 					<img
 						className='profile-pic'
-						src={`http://127.0.0.1:8000${profilePic}`}
+						src={`${profilePic}`}
 						alt='Profile'
 					/>
 				</div>

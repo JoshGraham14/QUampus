@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.contrib.auth.hashers import make_password, check_password
+from django.db.models import Q
 
 import jwt
 import datetime
@@ -11,9 +12,9 @@ import datetime
 from decouple import config
 
 from .models import Dining, LectureHall, Residence, PhoneNumber, \
-                    ForumPost, ForumReply, Student
+                    ForumPost, ForumReply, Student, Message, Thread
 from .serializers import DiningSerializer, ForumPostSerializer, ForumReplySerializer, LectureHallSerializer, \
-                         ResidenceSerializer, PhoneNumberSerializer, StudentSerializer
+                         ResidenceSerializer, PhoneNumberSerializer, StudentSerializer, MessageSerializer, ThreadSerializer
 from . import serializers
 
 
@@ -96,7 +97,7 @@ class UserView(APIView):
             raise AuthenticationFailed('Unauthenticated.')
 
         user = Student.objects.filter(id=payload['id']).first()
-        serializer = StudentSerializer(user)
+        serializer = StudentSerializer(user, context={'request': request})
         
         return Response(serializer.data)
 
@@ -184,3 +185,20 @@ class ForumPostViewSet(viewsets.ModelViewSet):
 class ForumReplyViewSet(viewsets.ModelViewSet):
     queryset = ForumReply.objects.all().order_by('created')
     serializer_class = ForumReplySerializer
+
+
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all().order_by('created')
+    serializer_class = MessageSerializer
+
+
+class ThreadViewSet(viewsets.ModelViewSet):
+    queryset = Thread.objects.all()
+    serializer_class = ThreadSerializer
+
+class ThreadView(APIView):
+    def get(self, request):
+        id = request.data['id']
+        threads = Thread.objects.filter(Q(user__id=id) | Q(receiver__id=id))
+        serializer = ThreadSerializer(threads, many=True, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -12,6 +12,8 @@ router.register(r'numbers', views.PhoneNumberViewSet)
 router.register(r'users', views.StudentViewSet)
 router.register(r'posts', views.ForumPostViewSet)
 router.register(r'replies', views.ForumReplyViewSet)
+router.register(r'messages', views.MessageViewSet)
+router.register(r'threads', views.ThreadViewSet)
 
 
 urlpatterns = [
@@ -22,6 +24,7 @@ urlpatterns = [
     path('user', views.UserView.as_view()),
     path('logout', views.LogoutView.as_view()),
     path('image-upload', views.ImageUploadView.as_view()),
+    path('thread', views.ThreadView.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

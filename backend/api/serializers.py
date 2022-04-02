@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from .models import Dining, LectureHall, Residence, PhoneNumber, \
-                    ForumPost, ForumReply, Student
+from .models import Dining, LectureHall, Message, Residence, PhoneNumber, \
+                    ForumPost, ForumReply, Student, Thread
 
 class DiningSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -25,6 +25,21 @@ class PhoneNumberSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PhoneNumber
         fields = '__all__'
+
+
+class MessageSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Message
+        fields = '__all__'
+
+
+class ThreadSerializer(serializers.HyperlinkedModelSerializer):
+    messages = MessageSerializer(many=True, required=False)
+    class Meta:
+        model = Thread
+        fields = '__all__'
+
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
@@ -55,6 +70,3 @@ class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ForumPost
         fields = '__all__'
-
-
-
