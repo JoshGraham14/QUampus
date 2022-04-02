@@ -46,6 +46,10 @@ nav {
 	font-size: 2rem;
 }
 
+.active-nav {
+	color: var(--color-red);
+}
+
 .back-btn {
 	color: var(--color-light-blue);
 	font-size: 3rem;

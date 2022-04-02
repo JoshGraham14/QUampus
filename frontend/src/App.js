@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { Outlet, Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,23 +11,57 @@ import { faMessage } from '@fortawesome/free-solid-svg-icons'
 import './css/app.css'
 
 const App = () => {
+	const [active, setActive] = useState('/')
+
+	const handleClick = route => {
+		setActive(route)
+	}
+
 	return (
 		<div className='App'>
 			<nav>
 				<Link to='/'>
-					<FontAwesomeIcon className='icon' icon={faHouse} />
+					<FontAwesomeIcon
+						className={active === '/' ? 'icon active-nav' : 'icon'}
+						icon={faHouse}
+						onClick={() => handleClick('/')}
+					/>
 				</Link>
 				<Link to='/profile'>
-					<FontAwesomeIcon className='icon' icon={faUser} />
+					<FontAwesomeIcon
+						className={
+							active === '/profile' ? 'icon active-nav' : 'icon'
+						}
+						icon={faUser}
+						onClick={() => handleClick('/profile')}
+					/>
 				</Link>
 				<Link to='/map'>
-					<FontAwesomeIcon className='icon' icon={faMap} />
+					<FontAwesomeIcon
+						className={
+							active === '/map' ? 'icon active-nav' : 'icon'
+						}
+						icon={faMap}
+						onClick={() => handleClick('/map')}
+					/>
 				</Link>
 				<Link to='/numbers'>
-					<FontAwesomeIcon className='icon' icon={faPhone} />
+					<FontAwesomeIcon
+						className={
+							active === '/numbers' ? 'icon active-nav' : 'icon'
+						}
+						icon={faPhone}
+						onClick={() => handleClick('/numbers')}
+					/>
 				</Link>
 				<Link to='/forums'>
-					<FontAwesomeIcon className='icon' icon={faMessage} />
+					<FontAwesomeIcon
+						className={
+							active === '/forums' ? 'icon active-nav' : 'icon'
+						}
+						icon={faMessage}
+						onClick={() => handleClick('/forums')}
+					/>
 				</Link>
 			</nav>
 			<Outlet />
