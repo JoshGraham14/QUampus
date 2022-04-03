@@ -18,7 +18,7 @@
 }
 
 .form-input:focus {
-	outline: 0.1em solid var(--color-light-blue);
+	outline: 0.1em solid var(--color-black);
 }
 
 .small-font {

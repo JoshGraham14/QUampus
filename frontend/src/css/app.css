@@ -9,12 +9,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 :root {
+/* 	Original Colours:
 	--color-white: white;
 	--color-black: black;
 	--color-dark-blue: #00091d;
 	--color-light-blue: #78c2fc;
 	--color-yellow: #fff7c3;
-	--color-red: #ff5656;
+	--color-red: #ff5656; */
+
+	--color-white: white;
+	/* --color-black: black; */
+	--color-dark-blue: #00091d;
+	--color-black: #000000;
+	--color-red: #972020;
+	--color-yellow: #5388a7;
+
 }
 
 body {
@@ -32,7 +41,7 @@ body {
 nav {
 	position: fixed;
 	bottom: 0;
-	background: var(--color-light-blue);
+	background: var(--color-black);
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
@@ -47,11 +56,11 @@ nav {
 }
 
 .active-nav {
-	color: var(--color-red);
+	color: var(--color-yellow);
 }
 
 .back-btn {
-	color: var(--color-light-blue);
+	color: var(--color-black);
 	font-size: 3rem;
 	position: absolute;
 	top: 1em;
@@ -59,7 +68,7 @@ nav {
 }
 
 .btn {
-	background: var(--color-light-blue);
+	background: var(--color-black);
 	color: var(--color-white);
 	text-decoration: none;
 	text-align: center;
@@ -74,7 +83,7 @@ nav {
 	margin-top: 2em;
 	margin-bottom: 0.2em;
 	font-size: 3rem;
-	color: var(--color-light-blue);
+	color: var(--color-black);
 }
 
 .near-top {
@@ -92,8 +101,13 @@ nav {
 }
 
 .red {
-	color: red;
+	color: var(--color-white);
 }
+
+.blue {
+	color: var(--color-yellow);
+}
+
 .red-bg {
 	background: var(--color-red);
 }

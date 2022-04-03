@@ -17,27 +17,32 @@ const QUMapLocation = props => {
 		zoom: 15,
 	}
 
+	const defaultMapOptions = {
+		fullscreenControl: false,
+	}
+
 	return (
-		<>
+		<div className='map-body'>
 			<Link to={page === 'dining' ? '/dining' : '/' + page + 's'}>
 				<FontAwesomeIcon
-					className='icon back-btn'
+					className='icon back-btn blue'
 					icon={faCircleChevronLeft}
 				/>
 			</Link>
-			<h2 className='title smaller campus-map-header'>Campus Map</h2>
-			<div style={{ height: '85vh', width: '100%' }}>
+			<h2 className='title smaller blue campus-map-header'>Campus Map</h2>
+			<div style={{ height: '80vh', width: '100%' }}>
 				<GoogleMapReact
 					bootstrapURLKeys={{
 						key: process.env.REACT_APP_GOOGLE_API_KEY,
 					}}
 					defaultCenter={defaultLocation.center}
 					defaultZoom={defaultLocation.zoom}
+					defaultOptions={defaultMapOptions}
 				>
 					<MapMarker lat={item.lat} lng={item.long} item={item} />
 				</GoogleMapReact>
 			</div>
-		</>
+		</div>
 	)
 }
 

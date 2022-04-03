@@ -8,7 +8,7 @@
 .numbers-wrapper {
 	display: flex;
 	width: 90%;
-	background: var(--color-light-blue);
+	background: var(--color-black);
 	color: var(--color-white);
 	justify-content: left;
 	align-items: center;

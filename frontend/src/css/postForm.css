@@ -35,7 +35,7 @@
     overflow: hidden;
     width: 88.5%;
     height: 0.3em;
-    background: var(--color-light-blue);
+    background: var(--color-black);
     bottom: 14.5em;
 }
 
@@ -51,7 +51,7 @@ textarea {
 
 textarea:focus {
     border: none;
-    outline: 0.2em solid var(--color-light-blue);
+    outline: 0.2em solid var(--color-black);
 }
 
 .reply-form textarea:focus {

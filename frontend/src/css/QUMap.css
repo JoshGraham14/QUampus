@@ -2,6 +2,7 @@
 	margin-top: 2em;
 	margin-bottom: 1em;
 	display: flex;
+	background: var(--color-black);
 }
 
 select {
@@ -10,8 +11,14 @@ select {
 	font-size: 2rem;
 	border: none;
 	outline: 0.1em solid var(--color-dark-blue);
-	background: var(--color-light-blue);
+	background: var(--color-yellow);
 	color: var(--color-white);
 	border-radius: 0.25em;
 	padding: 0.2em 2em 0.2em 1em;
+}
+
+.map-body {
+	background: var(--color-black);
+	height: 100%;
+	border-top: 0.5em solid var(--color-black);
 }

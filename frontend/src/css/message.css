@@ -1,9 +1,11 @@
 .sent-message {
-    background: var(--color-light-blue);
+    background: rgb(4, 31, 71);
+    color: white;
     margin-left: 4em;
     margin-right: 1em;
     padding: 1em;
     margin-bottom: 1em;
+    border-radius: 1em;
 }
 
 .reply-message {
@@ -12,4 +14,5 @@
     margin-left: 1em;
     padding: 1em;
     margin-bottom: 1em;
+    border-radius: 1em;
 }

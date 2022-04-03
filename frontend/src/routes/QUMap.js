@@ -25,7 +25,7 @@ const QUMapLocation = props => {
 	}
 
 	return (
-		<>
+		<div className='map-body'>
 			<div className='drop-down-menu'>
 				<select onChange={handleFilter} defaultValue=''>
 					<option value='' disabled>
@@ -37,7 +37,7 @@ const QUMapLocation = props => {
 				</select>
 			</div>
 			{/* Important! Always set the container height explicitly */}
-			<div style={{ height: '85vh', width: '100%' }}>
+			<div style={{ height: '81vh', width: '100%' }}>
 				<GoogleMapReact
 					bootstrapURLKeys={{
 						key: process.env.REACT_APP_GOOGLE_API_KEY,
@@ -57,7 +57,7 @@ const QUMapLocation = props => {
 					})}
 				</GoogleMapReact>
 			</div>
-		</>
+		</div>
 	)
 }
 

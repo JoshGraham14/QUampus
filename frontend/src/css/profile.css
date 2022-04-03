@@ -2,6 +2,25 @@ input[type='file'] {
 	display: none;
 }
 
+input[type='text'].username-input {
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+	padding-left: 0.3em;
+	margin-right: 0;
+	width: 27ch;
+	border: none;
+	border-radius: 0.25em;
+}
+
+input[type='text'].email-input {
+	width: 32.9ch;
+}
+
+
+input[type='text'].name-input {
+	width: 22.6ch;
+}
+
 .plus-icon {
 	position: absolute;
 	width: 3em;
@@ -44,7 +63,7 @@ input[type='file'] {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	width: 90%;
+	width: 85%;
 	gap: 1em;
 }
 
@@ -56,6 +75,12 @@ input[type='file'] {
 .display-field span {
 	display: flex;
 	gap: 0.3em;
+	background: rgba(255, 255, 255, 0.39);
+	border-radius: 0.25em;
+	padding: 0.3em;
+	padding-right: 0;
+	width: 34ch;
+	overflow: hidden;
 }
 
 .btn-profile {
@@ -102,4 +127,8 @@ input[type='file'] {
 
 .green {
 	color: green;
+}
+
+.check {
+	color: var(--color-yellow);
 }

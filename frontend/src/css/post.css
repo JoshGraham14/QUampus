@@ -22,7 +22,7 @@
 }
 
 .reply-icon {
-	color: var(--color-light-blue);
+	color: var(--color-black);
 	position: absolute;
 	right: 0.2em;
 	bottom: 0.2em;
@@ -63,7 +63,7 @@
 	content: '';
 	display: block;
 	position: absolute;
-	background: var(--color-light-blue);
+	background: var(--color-black);
 	width: 95%;
 	z-index: -1;
 	transform: translate(-0.7em, -2.5em);

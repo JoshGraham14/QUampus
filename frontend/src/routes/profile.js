@@ -5,7 +5,7 @@ import icon from '../img/update-profile-icon.png'
 import '../css/profile.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faPencil, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import axios from 'axios'
 
@@ -42,7 +42,6 @@ const Profile = () => {
 				setUserName(content.username)
 				setProfilePic(content.profile_pic)
 				setName(content.first_name)
-				console.log(content)
 			}
 		})()
 		return () => {
@@ -88,7 +87,6 @@ const Profile = () => {
 	}
 
 	const handleInputChange = (e, field) => {
-		console.log(`${field}: ${e.target.value}`)
 		if (field === 'username') {
 			setNewUsername(e.target.value)
 		} else if (field === 'email') {
@@ -106,7 +104,6 @@ const Profile = () => {
 			newName: newName,
 			newPassword: '',
 		}
-		console.log(`submitting: ${content}`)
 		axios.put('http://127.0.0.1:8000/user', content)
 	}
 
@@ -160,6 +157,7 @@ const Profile = () => {
 									<input
 										autoFocus
 										type='text'
+										className='username-input'
 										defaultValue={username}
 										onChange={e =>
 											handleInputChange(e, 'username')
@@ -175,7 +173,11 @@ const Profile = () => {
 								onClick={e => showInput(e, 'username')}
 							/>
 						) : (
-							''
+							<FontAwesomeIcon
+								className='pencil-icon check'
+								icon={faCheck}
+								onClick={submitNewData}
+							/>
 						)}
 					</div>
 					<div className='display-field'>
@@ -192,6 +194,7 @@ const Profile = () => {
 										autoFocus
 										type='text'
 										defaultValue={email}
+										className='email-input'
 										onChange={e =>
 											handleInputChange(e, 'email')
 										}
@@ -206,7 +209,11 @@ const Profile = () => {
 								onClick={e => showInput(e, 'email')}
 							/>
 						) : (
-							''
+							<FontAwesomeIcon
+								className='pencil-icon check'
+								icon={faCheck}
+								onClick={submitNewData}
+							/>
 						)}
 					</div>
 					<div className='display-field'>
@@ -222,6 +229,7 @@ const Profile = () => {
 										autoFocus
 										type='text'
 										defaultValue={name}
+										className='name-input'
 										onChange={e =>
 											handleInputChange(e, 'name')
 										}
@@ -229,14 +237,18 @@ const Profile = () => {
 								</form>
 							)}
 						</span>
-						{!displayEmailInput ? (
+						{!displayNameInput ? (
 							<FontAwesomeIcon
 								className='pencil-icon'
 								icon={faPencil}
 								onClick={e => showInput(e, 'name')}
 							/>
 						) : (
-							''
+							<FontAwesomeIcon
+								className='pencil-icon check'
+								icon={faCheck}
+								onClick={submitNewData}
+							/>
 						)}
 					</div>
 				</div>

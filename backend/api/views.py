@@ -103,6 +103,7 @@ class UserView(APIView):
 
     def put(self, request):
         user = Student.objects.filter(id=request.data['id']).first()
+        serializer = None
         # if the password is being updated
         if request.data['newPassword'] != '':
             if not check_password(request.data['oldPassword'], user.password):
