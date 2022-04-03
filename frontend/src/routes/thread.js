@@ -14,11 +14,6 @@ const Thread = props => {
 	const [update, setUpdate] = useState(false)
 	const divRef = useRef()
 
-	console.log(messages)
-	console.log(thread)
-	console.log(friend)
-	console.log(user)
-
 	useEffect(() => {
 		axios
 			.get('http://127.0.0.1:8000/threads', {
@@ -43,7 +38,11 @@ const Thread = props => {
 					.filter(item => {
 						return item.url === thread
 					})
-				setMessages(data[0].messages)
+				if (data[0].messages !== undefined) {
+					setMessages(data[0].messages)
+				} else {
+					setMessages([])
+				}
 				divRef.current.scrollTop = divRef.current.scrollHeight
 			})
 	}, [update, id, thread])

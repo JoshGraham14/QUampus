@@ -194,7 +194,7 @@ class MessageViewSet(viewsets.ModelViewSet):
 
 
 class ThreadViewSet(viewsets.ModelViewSet):
-    queryset = Thread.objects.all()
+    queryset = Thread.objects.all().order_by('-created')
     serializer_class = ThreadSerializer
 
 class ThreadView(APIView):

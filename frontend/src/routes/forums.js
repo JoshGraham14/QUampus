@@ -91,7 +91,7 @@ const Forums = () => {
 				icon={faInbox}
 				onClick={handleInboxButton}
 			/>
-			<h2 className='title near-top'>Forums</h2>
+			<h2 className='title near-top'>Forum</h2>
 			<PostForm
 				postType='post'
 				handleSubmit={handleSubmit}
@@ -118,6 +118,7 @@ const Forums = () => {
 										message={reply.message}
 										poster={reply.poster}
 										reply={true}
+										userID={userID}
 									/>
 								)
 							})}
