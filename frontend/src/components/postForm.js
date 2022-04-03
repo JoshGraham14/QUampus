@@ -12,9 +12,13 @@ const PostForm = props => {
 		originalPoster,
 		originalPost,
 		userID,
+		setReplyToggle,
+		replyToggle,
+		submitReply,
 	} = props
 
 	const handleReplySubmit = e => {
+		e.preventDefault()
 		const replyMessage = e.target[0].value
 		console.log(replyMessage)
 		axios
@@ -26,7 +30,8 @@ const PostForm = props => {
 			.catch(response => {
 				console.log('something went wrong')
 			})
-		console.log('reply submitted')
+		e.target[0].value = ''
+		submitReply()
 	}
 
 	return (

@@ -67,6 +67,7 @@ const Forums = () => {
 	}
 
 	const handleSubmit = e => {
+		e.preventDefault()
 		const message = e.target[0].value
 		axios
 			.post('http://127.0.0.1:8000/posts/', {
@@ -77,6 +78,10 @@ const Forums = () => {
 			.catch(response => {
 				console.log('something went wrong')
 			})
+		e.target[0].value = ''
+		// auth doesn't actually represent authentication anymore
+		// this just rerenders the posts
+		setAuth(!auth)
 	}
 
 	return (
@@ -102,6 +107,8 @@ const Forums = () => {
 								poster={item.poster}
 								userID={userID}
 								reply={false}
+								auth={auth}
+								setAuth={setAuth}
 								originalPost={item.url}
 							/>
 							{item.forum_replies.map(reply => {

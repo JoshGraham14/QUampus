@@ -12,12 +12,16 @@ const QUMapLocation = props => {
 	const defaultLocation = props.defaultLocation
 
 	useEffect(() => {
-		axios
-			.get(`http://127.0.0.1:8000/${selected}/`)
-			.then(response => {
-				setLocations(response.data)
-			})
-			.catch(() => {})
+		if (selected === 'no filter') {
+			setLocations([])
+		} else {
+			axios
+				.get(`http://127.0.0.1:8000/${selected}/`)
+				.then(response => {
+					setLocations(response.data)
+				})
+				.catch(() => {})
+		}
 	}, [selected])
 
 	const handleFilter = e => {
@@ -28,9 +32,7 @@ const QUMapLocation = props => {
 		<div className='map-body'>
 			<div className='drop-down-menu'>
 				<select onChange={handleFilter} defaultValue=''>
-					<option value='' disabled>
-						Filter
-					</option>
+					<option value='no filter'>No Filter</option>
 					<option value='dining'>Dining</option>
 					<option value='lecturehall'>Lecture Halls</option>
 					<option value='residence'>Residences</option>

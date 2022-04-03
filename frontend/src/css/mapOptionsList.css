@@ -12,8 +12,8 @@
 	display: block;
 	position: absolute;
 	margin-top: 8em;
-	background: black;
-	color: black;
+	background: var(--color-black);
+	color: var(--color-black);
 	width: 88vw;
 	height: 0.15em;
 }

@@ -10,7 +10,8 @@ import PostForm from './postForm'
 export const Post = props => {
 	const [user, setUser] = useState([])
 	const [replyToggle, setReplyToggle] = useState(false)
-	const { message, poster, reply, originalPost, userID } = props
+	const { message, poster, reply, originalPost, userID, auth, setAuth } =
+		props
 
 	// the poster prop is the url to the person that made the post
 	// the user object must be pulled from the api to get their name
@@ -19,6 +20,11 @@ export const Post = props => {
 			setUser(response.data)
 		}) // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
+
+	const submitReply = () => {
+		setReplyToggle(false)
+		setAuth(!auth)
+	}
 
 	const handleReplyButton = () => {
 		setReplyToggle(!replyToggle)
@@ -57,6 +63,7 @@ export const Post = props => {
 						postType='reply'
 						message={`Reply to ${user.username}`}
 						handleReplyButton={handleReplyButton}
+						submitReply={submitReply}
 						originalPoster={poster}
 						originalPost={originalPost}
 						userID={userID}
