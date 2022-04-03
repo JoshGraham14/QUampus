@@ -2,10 +2,12 @@ import '../css/message.css'
 
 const Message = props => {
 	const { text, reply } = props
-	console.log(reply)
 	return (
 		<div className={reply ? 'reply-message' : 'sent-message'}>
 			<p>{text}</p>
+			<div
+				className={reply ? 'reply-message-stem' : 'sent-message-stem'}
+			></div>
 		</div>
 	)
 }

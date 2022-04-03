@@ -1,18 +1,40 @@
 .sent-message {
+    position: relative;
     background: rgb(4, 31, 71);
     color: white;
     margin-left: 4em;
     margin-right: 1em;
     padding: 1em;
-    margin-bottom: 1em;
     border-radius: 1em;
 }
 
 .reply-message {
+    position: relative;
     background: var(--color-white);
     margin-right: 4em;
     margin-left: 1em;
     padding: 1em;
-    margin-bottom: 1em;
     border-radius: 1em;
+} 
+
+.sent-message-stem {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 1em solid transparent;
+    border-top: 0;
+    border-bottom: 2em solid rgb(4, 31, 71);
+    right: -0.7em;
+    bottom: 0;
+}
+
+.reply-message-stem {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 1em solid transparent;
+    border-top: 0;
+    border-bottom: 2em solid var(--color-white);
+    left: -0.7em;
+    bottom: 0;
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Thread from '../routes/thread'
 
 const MessagePreview = props => {
 	const navigate = useNavigate()
@@ -8,7 +9,6 @@ const MessagePreview = props => {
 	const [friend, setFriend] = useState({})
 	const [text, setText] = useState('')
 	const messagesLength = messages.length
-	console.log(`In messagePreview.js id = ${id}`)
 
 	useEffect(() => {
 		if (messages[0] !== undefined) {
